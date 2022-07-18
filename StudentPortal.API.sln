@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.API.Test", "StudentPortal.API.Test\StudentPortal.API.Test.csproj", "{56E31F5F-4C26-42F8-9DC4-CB920C6484D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPortal.API", "StudentPortal.API\StudentPortal.API.csproj", "{069A6FEA-92CF-4BE0-975D-877AAC2E8A8E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{56E31F5F-4C26-42F8-9DC4-CB920C6484D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56E31F5F-4C26-42F8-9DC4-CB920C6484D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56E31F5F-4C26-42F8-9DC4-CB920C6484D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56E31F5F-4C26-42F8-9DC4-CB920C6484D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{069A6FEA-92CF-4BE0-975D-877AAC2E8A8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{069A6FEA-92CF-4BE0-975D-877AAC2E8A8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{069A6FEA-92CF-4BE0-975D-877AAC2E8A8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{069A6FEA-92CF-4BE0-975D-877AAC2E8A8E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useAuth0 } from "@auth0/auth0-react";
 import Home from './Components/Home';
+import Account from './Components/Account';
 import RedirectPage from './Components/RedirectPage';
 
 const LogoutButton = () => {
@@ -28,7 +29,7 @@ function App() {
 
   return (
     <>
-      <Home />
+      <Account />
       {isAuthenticated && <LogoutButton/>}
     </>
   );

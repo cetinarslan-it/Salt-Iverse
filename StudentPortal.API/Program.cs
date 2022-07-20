@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using StudentPortal.API;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +17,7 @@ builder.Services.AddDbContext<StudentContext>(options =>
     options.UseSqlServer(connection));
 
 // Add services to the container.
+builder.Services.AddScoped<IAuthorizationHandler, HasScopeHandler>();
 builder.Services
   .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
   .AddJwtBearer(options =>
@@ -22,6 +25,14 @@ builder.Services
       options.Authority = $"https://{builder.Configuration["Auth0:Domain"]}/";
       options.Audience = builder.Configuration["Auth0:Audience"];
   });
+builder.Services.AddAuthorization(options =>
+{
+  options.AddPolicy(
+    "shouldexists", policy => policy.Requirements.Add(
+      new HasScopeRequirement())
+  );
+});
+
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

@@ -1,6 +1,8 @@
+using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+
 namespace StudentPortal.API.Controllers
 {
     [ApiController]
@@ -24,6 +26,7 @@ namespace StudentPortal.API.Controllers
         [Authorize]
         public IActionResult Claims ( )
         {
+            string email = User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email).Value;
             return Ok(
                 User.Claims.Select(c => new { c.Type, c.Value })
             );

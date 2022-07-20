@@ -1,11 +1,18 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<StudentContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("StudentContext")
-    ?? throw new InvalidOperationException("Connection string 'StudentContext' not found.")));
 
+var conStrBuilder = new SqlConnectionStringBuilder(
+        builder.Configuration.GetConnectionString("StudentContext")
+        ?? throw new InvalidOperationException("Connection string 'StudentContext' not found."));
+conStrBuilder.UserID = builder.Configuration["StudentContext:UserId"];
+conStrBuilder.Password = builder.Configuration["StudentContext:Password"];
+var connection = conStrBuilder.ConnectionString;
+
+builder.Services.AddDbContext<StudentContext>(options =>
+    options.UseSqlServer(connection));
 
 // Add services to the container.
 builder.Services
@@ -35,7 +42,6 @@ app.UseHttpsRedirection();
 app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:3000"));
 
 app.UseAuthentication();
-
 app.UseAuthorization();
 
 app.MapControllers();

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using StudentPortal.API;
+using AutoMapper;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +14,7 @@ conStrBuilder.UserID = builder.Configuration["StudentContext:UserId"];
 conStrBuilder.Password = builder.Configuration["StudentContext:Password"];
 var connection = conStrBuilder.ConnectionString;
 
+builder.Services.AddAutoMapper(cfg => cfg.AddProfile<DtosMapperProfile>());
 builder.Services.AddDbContext<StudentContext>(options =>
     options.UseSqlServer(connection));
 

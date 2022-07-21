@@ -10,5 +10,6 @@ public class DtosMapperProfile : Profile
   {
     CreateMap<Topic, TopicShortDTO>();
     CreateMap<WeekTopic, WeekTopicResponse>();
+    CreateMap<Topic, TopicDTO>();
   }
 }

@@ -1,8 +1,11 @@
 import React from 'react';
 
-const LoadingPage = ( ) => {
+const LoadingPage = ({ message }) => {
     return (
-        <h1>Loading...</h1>
+        <>
+            <h1>Loading...</h1>
+            {message && (<p>{message}</p>)}
+        </>
     );
 }
 

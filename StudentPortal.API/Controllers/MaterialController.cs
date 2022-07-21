@@ -1,6 +1,5 @@
 using System.Security.Claims;
 using AutoMapper;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using StudentPortal.Api.DTOs;
@@ -23,7 +22,7 @@ namespace StudentPortal.Api.Controllers
     [HttpGet]
     public async Task<IActionResult> MaterialList()
     {
-      var email = "mig.urbonaite@gmail.com";
+      var email = GetUserEmail();
       var res = await _context
                 .WeekTopics
                 .Include(w => w.Course)
@@ -35,8 +34,24 @@ namespace StudentPortal.Api.Controllers
               Problem("Entity is null.");
     }
 
+    [HttpGet]
+    public async Task<IActionResult> TopicInfo(int selectedTopicId )
+    {
+      var email = GetUserEmail();
+      var res = await _context.Topics
+                  .Where(t=>t.Id == selectedTopicId)
+                  .Where(w => w.WeekTopic.Course.CourseId == _context.Students.FirstOrDefault(s => s.Email == email).CourseId)
+                  .Include(p=>p.Presentations)
+                  .Include(p=>p.Labs)
+                  .Include(p=>p.Videos)
+                  .ToListAsync();
+        
+      return _context.Topics != null ?
+              Ok(_mapper.Map<List<TopicDTO>>(res)) :
+              Problem("Entity is null.");
+    }
+
     private string GetUserEmail() =>
         User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email).Value;
   }
 }
-

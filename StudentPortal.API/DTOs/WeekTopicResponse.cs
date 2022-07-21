@@ -1,7 +1,3 @@
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using StudentPortal.Api.Models;
-
 namespace StudentPortal.Api.DTOs;
 public class WeekTopicResponse
 {   

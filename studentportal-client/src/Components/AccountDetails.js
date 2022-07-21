@@ -40,7 +40,7 @@ const AccountDetails = ({ user }) => {
                 }}
             />
             <TextField
-                label="Course"
+                label="Courses"
                 value={user.courseName}
                 variant="filled"
                 InputProps={{

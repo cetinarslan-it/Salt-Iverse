@@ -58,7 +58,7 @@ const Account = () => {
     (
       userMetadata?.errorMessage != null
         ? <ErrorPage message={userMetadata?.errorMessage} />
-        : <Navbar >
+        : 
           <div>
             <AccountHeader user={user} />
             <TabContext value={selectedTab}>
@@ -76,7 +76,7 @@ const Account = () => {
               </TabPanel>
             </TabContext>
           </div>
-        </Navbar>
+        
     )
   );
 }

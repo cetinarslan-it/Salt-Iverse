@@ -14,13 +14,10 @@ import Typography from '@mui/material/Typography';
 import MenuIcon from '@mui/icons-material/Menu';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
-
-
 import { useAuth0 } from "@auth0/auth0-react";
-
 import LogoutButton from './LogoutButton';
 
-
+import { NavLink } from 'react-router-dom';
 
 const drawerWidth = 240;
 
@@ -40,11 +37,19 @@ const Navbar = (props) => {
       <Divider />
       <List>
         {['Account', 'Topics', 'Labs', 'Assignments'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
+          <NavLink
+            style={({ isActive }) => {
+              return {
+                color: isActive ? "red" : "inherit",
+              };
+            }}
+          to={`/${text.toLowerCase()}`}>
+            <ListItem key={text} disablePadding>
+              <ListItemButton>
+                <ListItemText primary={text} />
+              </ListItemButton>
+            </ListItem>
+          </NavLink>
         ))}
       </List>
       <Divider />

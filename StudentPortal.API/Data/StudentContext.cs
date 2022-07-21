@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using StudentPortal.Api.Models;
 
@@ -13,4 +9,11 @@ using StudentPortal.Api.Models;
         }
 
         public DbSet<Student> Students { get; set; } = default!;
+        public DbSet<Course> Courses { get; set; }
+        public DbSet<Document> Documents { get; set; }
+        public DbSet<Lab> Labs { get; set; }
+        public DbSet<Presentation> Presentations { get; set; }
+        public DbSet<Topic> Topics { get; set; }
+        public DbSet<Video> Videos { get; set; }
+        public DbSet<WeekTopic> WeekTopics { get; set; }
     }

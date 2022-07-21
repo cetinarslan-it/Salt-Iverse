@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace StudentPortal.API.Controllers
+namespace StudentPortal.Api.Controllers
 {
   [ApiController]
   [Route("[controller]")]

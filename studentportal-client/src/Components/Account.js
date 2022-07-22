@@ -16,7 +16,7 @@ import LoadingPage from "./LoadingPage";
 const API_URL = "localhost:7119";
 const ME_URL = `https://${API_URL}/students/me`;
 
-const Account = () => {
+const Account = ({ onError }) => {
   const { user, getAccessTokenSilently } = useAuth0();
   const [userMetadata, setUserMetadata] = useState(null);
   const [selectedTab, setSelectedTab] = useState('1');
@@ -37,6 +37,7 @@ const Account = () => {
 
         if (metadataResponse.status !== 200) {
           setUserMetadata({ errorMessage: `${user?.name}, you are not allowed yet. Please, contact admin!` });
+          if (onError) { onError(`${user?.name}, you are not allowed yet`, 'Please, contact admin!'); }
         } else {
           const data = await metadataResponse.json();
           setUserMetadata(data);

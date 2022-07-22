@@ -56,10 +56,9 @@ const Topic = () => {
   }
 
   return (
-    
     <>
-      
-      <h1>{`Here is the content for ${id}`}</h1>
+      <h1>{`${Topics.topicName}`}</h1>
+      <p>{`${Topics.description}`}</p>
       <TabContext value={selectedTab}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <TabList onChange={(ev, newv) => setSelectedTab(newv)} aria-label="lab API tabs example">

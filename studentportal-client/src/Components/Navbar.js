@@ -16,6 +16,8 @@ import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import { useAuth0 } from "@auth0/auth0-react";
 import LogoutButton from './LogoutButton';
+import Button from '@mui/material/Button';
+import { Grid } from '@mui/material';
 
 import { NavLink } from 'react-router-dom';
 
@@ -43,7 +45,7 @@ const Navbar = (props) => {
                 color: isActive ? "red" : "inherit",
               };
             }}
-          to={`/${text.toLowerCase()}`}>
+            to={`/${text.toLowerCase()}`}>
             <ListItem key={text} disablePadding>
               <ListItemButton>
                 <ListItemText primary={text} />
@@ -69,28 +71,37 @@ const Navbar = (props) => {
         }}
       >
         <Toolbar>
-
           <Stack
+            sx={{ width: "100%" }}
             direction="row"
             justifyContent="space-between"
             alignItems="center"
             spacing={0}
           >
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              edge="start"
-              onClick={handleDrawerToggle}
-              sx={{ mr: 2, display: { sm: 'none' } }}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Typography variant="h6" noWrap component="div">
-              Responsive
-            </Typography>
-            <LogoutButton />
-            <Avatar alt={user.name} src={user.picture} />
-
+            <Stack
+              direction="row"
+              justifyContent="space-between"
+              alignItems="center">
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                edge="start"
+                onClick={handleDrawerToggle}
+                sx={{ mr: 2, display: { sm: 'none' } }}
+              >
+                <MenuIcon />
+              </IconButton>
+              <Typography variant="h6" noWrap component="div">
+                Student Portal
+              </Typography>
+            </Stack>
+            <Stack
+              direction="row"
+              justifyContent="space-between"
+              alignItems="center">
+              <LogoutButton />
+              <Avatar alt={user.name} src={user.picture} />
+            </Stack>
           </Stack>
         </Toolbar>
       </AppBar>
@@ -99,7 +110,6 @@ const Navbar = (props) => {
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
         aria-label="mailbox folders"
       >
-        {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <Drawer
           container={container}
           variant="temporary"

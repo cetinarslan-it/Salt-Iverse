@@ -7,6 +7,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import LoadingPage from './LoadingPage';
 import ErrorPage from './ErrorPage';
 import AccountHeader from './AccountHeader';
+import WeekTopicsHeader from './WeekTopicsHeader';
 import {
   BrowserRouter as Router,
   Switch,
@@ -54,7 +55,7 @@ export default function WeekTopics() {
 
   return (
     <>
-      <AccountHeader user={user} />
+      <WeekTopicsHeader />
       <Stack
         direction="row"
         justifyContent="center"

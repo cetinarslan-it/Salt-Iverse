@@ -51,6 +51,19 @@ namespace StudentPortal.Api.Controllers
               Problem("Entity is null.");
     }
 
+     [HttpGet]
+    public async Task<IActionResult> AllLabs()
+    {
+      //var email = "mig.urbonaite@gmail.com";
+      var res = await _context.Labs
+                  .Select(l=>l)
+                  .ToListAsync();
+        
+      return _context.Labs != null ?
+              Ok(_mapper.Map<List<LabsDTO>>(res)) :
+              Problem("Entity is null.");
+    }
+
     private string GetUserEmail() =>
         User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email).Value;
   }

@@ -7,6 +7,9 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 
 
 const Presentation = ({ pres }) => {
+    if (!pres || pres.length == 0) {
+        return <p>There are no slides for the topic yet...</p>
+    }
     return (
         <>
             <List>

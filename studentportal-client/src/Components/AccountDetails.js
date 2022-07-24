@@ -51,7 +51,7 @@ const AccountDetails = ({ user }) => {
                 label="LinkedIn"
                 value={user.linkedInUrl}
                 InputProps={{
-                    readOnly: true,
+                    readOnly: false,
                 }}
             />
             <TextField

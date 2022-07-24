@@ -35,7 +35,10 @@ const Navbar = (props) => {
 
   const drawer = (
     <div>
-      <Toolbar sx={{ bgcolor: "primary" }} />
+      <Toolbar
+        sx={{ color: "white", backgroundColor: "rgb(25, 118, 210)", justifyContent:"center" }}>
+        <img src="https://precourse.salt.study/_next/static/media/salt-logo-white.3c845df7.svg" alt="salt" width="100px" />
+      </Toolbar>
       <Divider />
       <List>
         {['Account', 'Topics', 'Labs', 'Assignments'].map((text, index) => (
@@ -55,6 +58,7 @@ const Navbar = (props) => {
         ))}
       </List>
       <Divider />
+    
     </div>
   );
 

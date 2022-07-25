@@ -22,7 +22,7 @@ const LabList = () => {
       });
       let response = null;
       try {
-        response = await fetch(`https://localhost:7119/Material/AllLabs`, {
+        response = await fetch(`https://studentportalapi.azurewebsites.net/Material/AllLabs`, {
           headers: { Authorization: `Bearer ${accessToken}` }
         });
       } catch (e) {

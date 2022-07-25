@@ -28,7 +28,7 @@ const AssignmentsResults = () => {
             });
             let response = null;
             try {
-                response = await fetch(`https://localhost:7119/Material/GetAssignments`, {
+                response = await fetch(`https://studentportalapi.azurewebsites.net/Material/GetAssignments`, {
                     headers: { Authorization: `Bearer ${accessToken}` }
                 });
             } catch (e) {

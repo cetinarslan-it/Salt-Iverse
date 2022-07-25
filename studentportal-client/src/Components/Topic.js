@@ -28,7 +28,7 @@ const Topic = () => {
       console.log(accessToken);
       let response = null;
       try {
-        response = await fetch(`https://localhost:7119/Material/TopicInfo?selectedTopicId=${id}`, {
+        response = await fetch(`https://studentportalapi.azurewebsites.net/Material/TopicInfo?selectedTopicId=${id}`, {
           headers: { Authorization: `Bearer ${accessToken}` }
         });
       } catch (e) {

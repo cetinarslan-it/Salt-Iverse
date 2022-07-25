@@ -27,7 +27,7 @@ export default function WeekTopics() {
         audience: "https://dev-2sq5ot8u.us.auth0.com/api/v2/",
         scope: "read:users"
       });
-      const response = await fetch('https://localhost:7119/Material/MaterialList', {
+      const response = await fetch('https://studentportalapi.azurewebsites.net/Material/MaterialList', {
         headers: { Authorization: `Bearer ${accessToken}` }
       });
 

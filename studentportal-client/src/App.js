@@ -24,7 +24,7 @@ function App() {
   useEffect(() => {
     (async function login() {
       if (!isLoading && !user) {
-        await loginWithRedirect();
+        await loginWithRedirect({redirectUri:`${window.location.href}`});
       }
     })();
   }, [isLoading]);

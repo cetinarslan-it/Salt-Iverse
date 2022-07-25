@@ -10,6 +10,7 @@ import NotFoundPage from './Components/NotFoundPage';
 import Labs from './Components/Labs'; 
 import ErrorPage from './Components/ErrorPage';
 import LabList from './Components/LabList';
+import AssignmentsResults from './Components/AssignmentsResults';
 
 
 function App() {
@@ -47,10 +48,10 @@ function App() {
             <Route path="/topics" element={<WeekTopics />} />
             <Route path="/topics/:id" element={<Topic />} />
             <Route path="/labs" element={<LabList />} />
+            <Route path="/assignments" element={<AssignmentsResults />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Navbar>
-
       )}
     </>
   );

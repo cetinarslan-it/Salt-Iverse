@@ -12,8 +12,8 @@ import AccountDocuments from "./AccountDocuments";
 import ErrorPage from "./ErrorPage";
 import LoadingPage from "./LoadingPage";
 
-const API_URL = "localhost:7119";
-const ME_URL = `https://${API_URL}/students/me`;
+const API_URL = "https://studentportalapi.azurewebsites.net";
+const ME_URL = `${API_URL}/students/me`;
 
 const Account = ({ onError }) => {
   const { user, getAccessTokenSilently } = useAuth0();
@@ -27,7 +27,7 @@ const Account = ({ onError }) => {
           audience: "https://dev-2sq5ot8u.us.auth0.com/api/v2/",
           scope: "read:users"
         });
-
+        console.log(accessToken);
         const metadataResponse = await fetch(ME_URL, {
           headers: { Authorization: `Bearer ${accessToken}` }
         });

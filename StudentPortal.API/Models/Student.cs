@@ -15,4 +15,5 @@ public class Student
   public int CourseId {get; set;}
   public Course Course { get; set; }
   public List<Document> Documents { get; set; }
+  public List<AssignmentResult> AssignmentResults { get; set; }
 }

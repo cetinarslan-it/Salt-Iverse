@@ -41,7 +41,7 @@ const AccountDetails = ({ user }) => {
             />
             <TextField
                 label="Courses"
-                value={user.courseName}
+                value={user.course.courseName}
                 variant="filled"
                 InputProps={{
                     readOnly: true,

@@ -12,5 +12,6 @@ public class DtosMapperProfile : Profile
     CreateMap<WeekTopic, WeekTopicResponse>();
     CreateMap<Topic, TopicDTO>();
     CreateMap<Lab, LabsDTO>();
+    CreateMap<AssignmentResult, AssignmentResultDto>();
   }
 }

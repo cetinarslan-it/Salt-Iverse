@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace StudentPortal.Api.Models;
 public class Course
@@ -7,5 +8,6 @@ public class Course
   public int CourseId { get; set; }
   public string CourseName { get; set; }   
 
+  [JsonIgnore]
   public List<Student> StudentList { get; set;}            
 }

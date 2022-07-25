@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import Navbar from "./Navbar";
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import TabContext from '@mui/lab/TabContext';
@@ -73,11 +72,10 @@ const Account = ({ onError }) => {
                 <AccountDetails user={userMetadata} />
               </TabPanel>
               <TabPanel value="2">
-                <AccountDocuments />
+                <AccountDocuments docs={userMetadata.documents} />
               </TabPanel>
             </TabContext>
           </div>
-        
     )
   );
 }

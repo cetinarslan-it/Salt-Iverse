@@ -3,6 +3,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using StudentPortal.Api.DTOs;
+using StudentPortal.Api.Models;
 
 namespace StudentPortal.Api.Controllers
 {
@@ -50,12 +51,21 @@ namespace StudentPortal.Api.Controllers
               Ok(_mapper.Map<List<TopicDTO>>(res)) :
               Problem("Entity is null.");
     }
-
+    [HttpGet]
+    public async Task<IActionResult> GetAssignments()
+    {
+      var email = GetUserEmail();
+      //var email = "mig.urbonaite@gmail.com";
+      var res = await _context.AssignmentResults
+                  .Where(t=>t.StudentId == _context.Students.FirstOrDefault(s => s.Email == email).Id)      
+                  .ToListAsync();       
+      return res != null ?
+              Ok(_mapper.Map<List<AssignmentResultDto>>(res)) :
+              Problem("Entity is null.");
+    }
      [HttpGet]
     public async Task<IActionResult> AllLabs()
     {
-      //var email = "mig.urbonaite@gmail.com";
-      
       var res = await _context.Labs
                   .Select(l=>l)
                   .ToListAsync();

@@ -16,4 +16,5 @@ using StudentPortal.Api.Models;
         public DbSet<Topic> Topics { get; set; }
         public DbSet<Video> Videos { get; set; }
         public DbSet<WeekTopic> WeekTopics { get; set; }
+        public DbSet<AssignmentResult> AssignmentResults { get; set; }
     }

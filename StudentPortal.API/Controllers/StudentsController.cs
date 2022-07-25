@@ -21,7 +21,9 @@ namespace StudentPortal.Api.Controllers
         {
             var email = GetUserEmail();
             return _context.Students != null ?
-                    Ok(await _context.Students.Include(d => d.Documents)
+                    Ok(await _context.Students
+                    .Include(d => d.Course)
+                    .Include(d => d.Documents)
                     .FirstOrDefaultAsync(s => s.Email == email)) :
             Problem("Entity is null.");
         }

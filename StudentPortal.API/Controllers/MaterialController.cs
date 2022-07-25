@@ -55,7 +55,9 @@ namespace StudentPortal.Api.Controllers
     public async Task<IActionResult> GetAssignments()
     {
       var email = GetUserEmail();
-      //var email = "mig.urbonaite@gmail.com";
+      if(email == null)
+        return Problem("You are not authorized");
+      
       var res = await _context.AssignmentResults
                   .Where(t=>t.StudentId == _context.Students.FirstOrDefault(s => s.Email == email).Id)      
                   .ToListAsync();       
@@ -76,6 +78,6 @@ namespace StudentPortal.Api.Controllers
     }
 
     private string GetUserEmail() =>
-        User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email).Value;
+        User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
   }
 }

@@ -6,13 +6,7 @@ using StudentPortal.API;
 using AutoMapper;
 
 var builder = WebApplication.CreateBuilder(args);
-
-var conStrBuilder = new SqlConnectionStringBuilder(
-        builder.Configuration.GetConnectionString("StudentContext")
-        ?? throw new InvalidOperationException("Connection string 'StudentContext' not found."));
-conStrBuilder.UserID = builder.Configuration["StudentContext:UserId"];
-conStrBuilder.Password = builder.Configuration["StudentContext:Password"];
-var connection = conStrBuilder.ConnectionString;
+var connection = builder.Configuration.GetConnectionString("StudentContext");
 
 builder.Services.AddAutoMapper(cfg => cfg.AddProfile<DtosMapperProfile>());
 builder.Services.AddDbContext<StudentContext>(options =>

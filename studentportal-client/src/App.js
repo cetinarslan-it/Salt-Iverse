@@ -9,6 +9,7 @@ import Account from './Components/Account';
 import NotFoundPage from './Components/NotFoundPage';
 import Labs from './Components/Labs'; 
 import ErrorPage from './Components/ErrorPage';
+import LabList from './Components/LabList';
 
 
 function App() {
@@ -45,7 +46,7 @@ function App() {
             <Route path="/account" element={<Account />} />
             <Route path="/topics" element={<WeekTopics />} />
             <Route path="/topics/:id" element={<Topic />} />
-
+            <Route path="/labs" element={<LabList />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Navbar>

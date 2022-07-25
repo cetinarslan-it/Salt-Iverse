@@ -9,5 +9,6 @@ namespace StudentPortal.Api.Models
     public string DocumentUrl { get; set; }
     [JsonIgnore]
     public Student Student { get; set; }
+    
   }
 }

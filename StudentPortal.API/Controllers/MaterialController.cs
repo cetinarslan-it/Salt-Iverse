@@ -55,6 +55,7 @@ namespace StudentPortal.Api.Controllers
     public async Task<IActionResult> AllLabs()
     {
       //var email = "mig.urbonaite@gmail.com";
+      
       var res = await _context.Labs
                   .Select(l=>l)
                   .ToListAsync();

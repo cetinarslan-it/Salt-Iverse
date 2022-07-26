@@ -46,7 +46,7 @@ if ( app.Environment.IsDevelopment() )
 
 app.UseHttpsRedirection();
 
-app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://cetinarslan-it.github.io"));
+app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://zealous-bush-0d388e903.1.azurestaticapps.net"));
 
 app.UseAuthentication();
 app.UseAuthorization();

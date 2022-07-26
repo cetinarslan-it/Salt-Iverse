@@ -2,7 +2,9 @@
   "name": "studentportal-client",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://cetinarslan-it.github.io/Salt-Iverse",
+  "engines": {
+    "node": ">=16.0.0 <17"
+},
   "dependencies": {
     "@auth0/auth0-react": "^1.10.2",
     "@emotion/react": "^11.9.3",
@@ -23,7 +25,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "CI=false && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",

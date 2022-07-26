@@ -28,6 +28,9 @@ on:
   push:
     branches:
       - "main"
+    paths:
+      - StudentPortal.API/**
+      - .github/workflows/azure-webapps-dotnet-core.yml
   workflow_dispatch:
 
 permissions:

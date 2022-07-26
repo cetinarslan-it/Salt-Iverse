@@ -4,10 +4,16 @@ on:
   push:
     branches:
       - main
+    paths:
+      - studentportal-client/**
+      - .github/workflows/azure-static-web-apps-zealous-bush-0d388e903.yml
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
       - main
+    paths:
+      - studentportal-client/**
+      - .github/workflows/azure-static-web-apps-zealous-bush-0d388e903.yml
 
 jobs:
   build_and_deploy_job:

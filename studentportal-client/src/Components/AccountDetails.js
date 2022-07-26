@@ -20,7 +20,7 @@ const AccountDetails = ({ user }) => {
                 audience: "https://dev-2sq5ot8u.us.auth0.com/api/v2/",
                 scope: "read:users"
             });
-            var res = await fetch(`https://localhost:7119/${endpoint}`, {
+            var res = await fetch(`https://studentportalapi.azurewebsites.net/${endpoint}`, {
                 method: 'PATCH',
                 body: JSON.stringify({
                     url: value,

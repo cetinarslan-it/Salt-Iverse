@@ -29,12 +29,12 @@ const LabList = () => {
         console.log("Unhandled error:", e.message);
         return;
       }
-      console.log(response);
+      
       if (response.status !== 200) {
         setLabs({ errorMessage: `Code: ${response.status}` });
       } else {
         const data = await response.json();
-        console.log(data);
+        
         if (data.length === 0) {
             setLabs({ errorMessage: `There are no labs so far` });
           return;

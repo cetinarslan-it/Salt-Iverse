@@ -27,12 +27,12 @@ const Account = ({ onError }) => {
           audience: "https://dev-2sq5ot8u.us.auth0.com/api/v2/",
           scope: "read:users"
         });
-        console.log(accessToken);
+        
         const metadataResponse = await fetch(ME_URL, {
           headers: { Authorization: `Bearer ${accessToken}` }
         });
 
-        console.log(metadataResponse);
+        
 
         if (metadataResponse.status !== 200) {
           setUserMetadata({ errorMessage: `${user?.name}, you are not allowed yet. Please, contact admin!` });
@@ -40,7 +40,7 @@ const Account = ({ onError }) => {
         } else {
           const data = await metadataResponse.json();
           setUserMetadata(data);
-          console.log(data);
+          
         }
       } catch (e) {
         console.log("Unhandled error:", e.message);

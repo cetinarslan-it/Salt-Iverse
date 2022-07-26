@@ -19,9 +19,20 @@ import LogoutButton from './LogoutButton';
 import Button from '@mui/material/Button';
 import { Grid } from '@mui/material';
 
+import PersonIcon from '@mui/icons-material/Person';
+import BookIcon from '@mui/icons-material/Book';
+import ScienceIcon from '@mui/icons-material/Science';
+import QuizIcon from '@mui/icons-material/Quiz';
+
 import { NavLink } from 'react-router-dom';
 
 const drawerWidth = 240;
+const menuItems = [
+  { name: 'Account', icon: <PersonIcon/> },
+  { name: 'Topics', icon: <BookIcon/>},
+  { name: 'Labs', icon: <ScienceIcon/>},
+  { name: 'Assignments', icon: <QuizIcon/>}
+];
 
 const Navbar = (props) => {
   const { window } = props;
@@ -41,20 +52,27 @@ const Navbar = (props) => {
       </Toolbar>
       <Divider />
       <List>
-        {['Account', 'Topics', 'Labs', 'Assignments'].map((text, index) => (
-          <NavLink
-            style={({ isActive }) => {
-              return {
-                color: isActive ? "red" : "inherit",
-              };
-            }}
-            to={`/${text.toLowerCase()}`}>
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          </NavLink>
+        {menuItems.map((menuItem, index) => (
+          <ListItem key={menuItem.name} disablePadding>
+          <Button
+            sx={(theme) => ({
+              padding: '0',
+              flexGrow: '1',
+              '&.active': {
+                backgroundColor: theme.palette.primary.main,
+                color: 'white',
+              }
+            })}
+            component={NavLink}
+            to={`/${menuItem.name.toLowerCase()}`}>
+            <ListItemButton>
+              {menuItem.icon}
+              <ListItemText primary={menuItem.name} 
+                sx={{marginLeft:"20px"}}
+              />
+            </ListItemButton>
+          </Button>
+        </ListItem>
         ))}
       </List>
       <Divider />

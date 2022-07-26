@@ -25,7 +25,7 @@ const Topic = () => {
         audience: "https://dev-2sq5ot8u.us.auth0.com/api/v2/",
         scope: "read:users"
       });
-      console.log(accessToken);
+      
       let response = null;
       try {
         response = await fetch(`https://studentportalapi.azurewebsites.net/Material/TopicInfo?selectedTopicId=${id}`, {
@@ -35,12 +35,11 @@ const Topic = () => {
         console.log("Unhandled error:", e.message);
         return;
       }
-      console.log(response);
+      
       if (response.status !== 200) {
         setTopics({ errorMessage: `Code: ${response.status}` });
       } else {
         const data = await response.json();
-        console.log(data);
         if (data.length === 0) {
           setTopics({ errorMessage: `Couldn't find courses for you` });
           return;

@@ -29,7 +29,6 @@ builder.Services.AddAuthorization(options =>
   );
 });
 
-
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -42,11 +41,12 @@ if ( app.Environment.IsDevelopment() )
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:3000"));
 }
 
 app.UseHttpsRedirection();
 
-app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:3000","https://cetinarslan-it.github.io"));
+app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://cetinarslan-it.github.io"));
 
 app.UseAuthentication();
 app.UseAuthorization();

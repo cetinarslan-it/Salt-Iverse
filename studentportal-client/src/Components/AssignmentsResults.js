@@ -35,12 +35,12 @@ const AssignmentsResults = () => {
                 console.log("Unhandled error:", e.message);
                 return;
             }
-            console.log(response);
+            
             if (response.status !== 200) {
                 setAssignments({ errorMessage: `Code: ${response.status}` });
             } else {
                 const data = await response.json();
-                console.log(data);
+                
                 if (data.length === 0) {
                     setAssignments({ errorMessage: `There are no assigments so far` });
                     return;

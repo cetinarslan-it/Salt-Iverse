@@ -15,7 +15,9 @@ const LogoutButton = () => {
             sx={{ color: "white" }}
 
             startIcon={<LogoutIcon />}
-            onClick={() => logout({ returnTo: `${window.location.origin}/Salt-Iverse` })}>
+            onClick={() => logout({
+                returnTo: `${window.location.origin}${(!window.location.origin.includes('localhost') ? '/Salt-Iverse' : '')}`
+            })}>
             LogOut
         </Button>
     );

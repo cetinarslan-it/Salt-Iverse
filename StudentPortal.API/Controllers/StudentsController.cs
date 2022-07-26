@@ -28,6 +28,16 @@ namespace StudentPortal.Api.Controllers
             Problem("Entity is null.");
         }
 
+        [HttpPatch]
+        public async Task<IActionResult> UpdateLinkedURL(string url)
+        {
+            var email = GetUserEmail();
+            var student = await _context.Students.FirstOrDefaultAsync(s=> s.Email == email);
+            student.LinkedInUrl = url;
+            await _context.SaveChangesAsync();
+            return Ok();
+        }
+
         private string GetUserEmail() =>
             User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email).Value;
     }

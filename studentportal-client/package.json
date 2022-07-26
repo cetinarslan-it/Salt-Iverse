@@ -4,7 +4,7 @@
   "private": true,
   "engines": {
     "node": ">=16.0.0 <17"
-},
+  },
   "dependencies": {
     "@auth0/auth0-react": "^1.10.2",
     "@emotion/react": "^11.9.3",

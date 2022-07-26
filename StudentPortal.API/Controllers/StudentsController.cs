@@ -2,6 +2,7 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using StudentPortal.Api.DTOs;
 
 namespace StudentPortal.Api.Controllers
 {
@@ -28,12 +29,22 @@ namespace StudentPortal.Api.Controllers
             Problem("Entity is null.");
         }
 
-        [HttpPatch]
-        public async Task<IActionResult> UpdateLinkedURL(string url)
+        [HttpPatch("/linkedin")]
+        public async Task<IActionResult> UpdateLinkedURL([FromBody] AccountLinkUpdateRequest request)
         {
             var email = GetUserEmail();
             var student = await _context.Students.FirstOrDefaultAsync(s=> s.Email == email);
-            student.LinkedInUrl = url;
+            student.LinkedInUrl = request.Url;
+            await _context.SaveChangesAsync();
+            return Ok();
+        }
+
+        [HttpPatch("/github")]
+        public async Task<IActionResult> UpdateGitURL([FromBody] AccountLinkUpdateRequest request)
+        {
+            var email = GetUserEmail();
+            var student = await _context.Students.FirstOrDefaultAsync(s=> s.Email == email);
+            student.GitHubUrl = request.Url;
             await _context.SaveChangesAsync();
             return Ok();
         }
@@ -42,4 +53,3 @@ namespace StudentPortal.Api.Controllers
             User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email).Value;
     }
 }
-

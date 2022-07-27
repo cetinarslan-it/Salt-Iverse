@@ -55,6 +55,12 @@ const Navbar = (props) => {
     setAnchorElUser(null);
   };
 
+  const handleLogoutClick = () => {
+    logout({
+      returnTo: window.location.origin
+    })
+  };
+
   const drawer = (
     <div>
       <Toolbar
@@ -144,7 +150,7 @@ const Navbar = (props) => {
                 </IconButton>
               </Tooltip>
               <Menu
-                sx={{ mt: '45px'}}
+                sx={{ mt: '45px' }}
                 id="menu-appbar"
                 anchorEl={anchorElUser}
                 anchorOrigin={{
@@ -159,15 +165,15 @@ const Navbar = (props) => {
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
               >
-                <MenuItem key="profileItem" onClick={handleCloseUserMenu} sx={{padding: 0}}>
-                  <Button sx={{ px: 5, flexGrow: 1 }} component={Link} to="/account" startIcon={<PersonIcon/>}>
-                      <Typography>Account</Typography>
+                <MenuItem key="profileItem" onClick={handleCloseUserMenu} sx={{ padding: 0 }}>
+                  <Button sx={{ px: 5, flexGrow: 1 }} component={Link} to="/account" startIcon={<PersonIcon />}>
+                    <Typography>Account</Typography>
                   </Button>
                 </MenuItem>
-                <Divider/>
-                <MenuItem key="logoutItem" onClick={logout} sx={{padding: 0}}>
+                <Divider />
+                <MenuItem key="logoutItem" onClick={handleLogoutClick} sx={{ padding: 0 }}>
                   <Button sx={{ px: 5, flexGrow: 1 }} startIcon={<LogoutIcon />}>
-                      <Typography>Logout</Typography>
+                    <Typography>Logout</Typography>
                   </Button>
                 </MenuItem>
               </Menu>

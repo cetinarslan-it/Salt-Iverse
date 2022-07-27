@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -39,8 +39,8 @@ const menuItems = [
 ];
 
 const Navbar = (props) => {
-  const { window } = props;
   const { user, logout } = useAuth0();
+  const container = window !== undefined ? () => window.document.body : undefined;
 
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -56,9 +56,7 @@ const Navbar = (props) => {
   };
 
   const handleLogoutClick = () => {
-    logout({
-      returnTo: window.location.origin
-    })
+    logout({ returnTo: window.location.origin});
   };
 
   const drawer = (
@@ -97,7 +95,7 @@ const Navbar = (props) => {
     </div>
   );
 
-  const container = window !== undefined ? () => window().document.body : undefined;
+  
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -134,15 +132,6 @@ const Navbar = (props) => {
                 Student Portal
               </Typography>
             </Stack>
-            {/* <Stack
-              direction="row"
-              justifyContent="space-between"
-              alignItems="center">
-
-              <LogoutButton />
-
-              <Avatar alt={user.name} src={user.picture} />
-            </Stack> */}
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -170,7 +159,7 @@ const Navbar = (props) => {
                     <Typography>Account</Typography>
                   </Button>
                 </MenuItem>
-                <Divider />
+                
                 <MenuItem key="logoutItem" onClick={handleLogoutClick} sx={{ padding: 0 }}>
                   <Button sx={{ px: 5, flexGrow: 1 }} startIcon={<LogoutIcon />}>
                     <Typography>Logout</Typography>

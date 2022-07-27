@@ -11,6 +11,7 @@ import Labs from './Components/Labs';
 import ErrorPage from './Components/ErrorPage';
 import LabList from './Components/LabList';
 import AssignmentsResults from './Components/AssignmentsResults';
+import Dashboard from './Components/Dashboard';
 
 
 function App() {
@@ -43,7 +44,8 @@ function App() {
       {isAuthenticated && (
         <Navbar>
           <Routes>
-            <Route exact path="/" element={<Navigate replace to="/account" />} />
+            <Route exact path="/" element={<Navigate replace to="/dashboard" />} />
+            <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/account" element={<Account />} />
             <Route path="/topics" element={<WeekTopics />} />
             <Route path="/topics/:id" element={<Topic />} />

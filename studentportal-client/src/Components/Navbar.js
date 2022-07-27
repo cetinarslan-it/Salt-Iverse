@@ -27,11 +27,13 @@ import PersonIcon from '@mui/icons-material/Person';
 import BookIcon from '@mui/icons-material/Book';
 import ScienceIcon from '@mui/icons-material/Science';
 import QuizIcon from '@mui/icons-material/Quiz';
+import DashboardIcon from '@mui/icons-material/Dashboard';
 
 import { Link, NavLink } from 'react-router-dom';
 
 const drawerWidth = 240;
 const menuItems = [
+  { name: 'Dashboard', icon: <DashboardIcon /> },
   { name: 'Account', icon: <PersonIcon /> },
   { name: 'Topics', icon: <BookIcon /> },
   { name: 'Labs', icon: <ScienceIcon /> },

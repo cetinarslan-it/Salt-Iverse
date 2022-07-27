@@ -13,14 +13,34 @@ import LabList from './Components/LabList';
 import AssignmentsResults from './Components/AssignmentsResults';
 import Dashboard from './Components/Dashboard';
 
+import WrongUser from './Components/WrongUser';
+
 
 function App() {
-  const { user, isAuthenticated, loginWithRedirect, isLoading } = useAuth0();
-  // const [ error, setError ] = useState(null);
+  const { user, isAuthenticated, loginWithRedirect, isLoading, getAccessTokenSilently} = useAuth0();
+  const [wrongUser, setWrongUser] = useState(false);
+  const [isUserChecking, setIsUserChecking] = useState(true);
 
-  // const errorHandler = (message, submessage) => {
-  //   setError({message, submessage});
-  // };
+  const checkIfUserExists = async () => {
+    try {
+      const accessToken = await getAccessTokenSilently({
+        audience: "https://dev-2sq5ot8u.us.auth0.com/api/v2/",
+        scope: "read:users"
+      });
+      const response = await fetch("https://studentportalapi.azurewebsites.net/students/me", {
+        headers: { Authorization: `Bearer ${accessToken}` }
+      });
+      if (response.status === 403) {
+        setWrongUser(true);
+      } else {
+        setWrongUser(false);
+      }
+    } catch (e) {
+      console.log("Unhandled error while getting acc info:", e.message);
+    } finally {
+      setIsUserChecking(false);
+    }
+  };
 
   useEffect(() => {
     (async function login() {
@@ -28,19 +48,21 @@ function App() {
         await loginWithRedirect();
       }
     })();
+    if (user) {
+      checkIfUserExists();
+    }
   }, [isLoading]);
 
-  if (isLoading) {
-    return <LoadingPage />;
+  if (isLoading || isUserChecking) {
+    return <LoadingPage message={isUserChecking ? 'Verifying user...' : undefined} />;
   }
 
-  // if (error !== null) {
-  //   return <ErrorPage message={error.message} submessage={error.submessage} />
-  // }
-
+  if (wrongUser) {
+    return <WrongUser />
+  }
+    
   return (
     <>
-      {/* {isAuthenticated && <Account /> } */}
       {isAuthenticated && (
         <Navbar>
           <Routes>

@@ -9,17 +9,17 @@ const topicList = [
     {
         id: 13,
         name: 'C# reflections',
-        description: "nfsbdjhdfbdsfn dsds sf snsfhjs fbhjs fms"
+        description: "Reflection provides objects that describe assemblies, modules, and types"
     },
     {
         id: 12,
         name: 'C# Functional',
-        description: "nfsbdjhdfbdsfn dsds sf snsfhjs fbhjs fms"
+        description: "A programming paradigm in C# that is frequently combined with object orie"
     },
     {
         id: 11,
         name: 'Repository pattern',
-        description: "nfsbdjhdfbdsfn dsds sf snsfhjs fbhjs fms"
+        description: "How to integrate all of the fundamental data operations relssssssssssssss"
     }
 ]
 
